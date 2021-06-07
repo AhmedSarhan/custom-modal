@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './modal.module.css';
 
-const Modal = ({ show, onClose, backdropStyles, modalStyles, children }) => {
+const Modal = ({
+	show,
+	onClose,
+	backdropStyles,
+	modalStyles,
+	children,
+	innerClose,
+}) => {
 	const modalRef = useRef();
 	useEffect(() => {
 		//  add when mounted
@@ -64,9 +71,11 @@ const Modal = ({ show, onClose, backdropStyles, modalStyles, children }) => {
 						exit="exit"
 					>
 						<div className={styles.modalContent}>
-							<button className={styles.closeBtn} onClick={onClose}>
-								&times;
-							</button>
+							{innerClose && (
+								<button className={styles.closeBtn} onClick={onClose}>
+									&times;
+								</button>
+							)}
 							{children}
 						</div>
 					</motion.div>
@@ -82,6 +91,7 @@ Modal.propTypes = {
 	children: PropTypes.node.isRequired,
 	backdropStyles: PropTypes.object,
 	modalStyles: PropTypes.object,
+	innerClose: PropTypes.bool,
 };
 
 export default Modal;
