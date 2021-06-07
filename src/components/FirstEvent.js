@@ -1,18 +1,9 @@
-import React, { useState } from 'react';
-import Modal from './Modal/Modal';
+import React from 'react';
 
 const FirstEvent = () => {
-	const [showModal, setShowModal] = useState(false);
-
 	return (
 		<div>
-			<button className="btn btn-primary" onClick={() => setShowModal(true)}>
-				Open Modal 1
-			</button>
-
-			<Modal show={showModal} onClose={() => setShowModal(false)}>
-				<p>This is first Modal</p>
-			</Modal>
+			<button className="btn btn-primary">Open Modal 1</button>
 		</div>
 	);
 };
